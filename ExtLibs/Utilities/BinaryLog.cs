@@ -18,6 +18,11 @@ namespace MissionPlanner.Utilities
         public const byte HEAD_BYTE1 = 0xA3; // Decimal 163  
         public const byte HEAD_BYTE2 = 0x95; // Decimal 149  
 
+        // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+        public const byte HEAD_BYTE_ZSY1 = 0xEB;
+        public const byte HEAD_BYTE_ZSY2 = 0x90;
+        // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
+
         [StructLayout(LayoutKind.Sequential, Pack = 1)]
         public struct log_Format
         {
@@ -104,6 +109,9 @@ namespace MissionPlanner.Utilities
             lock (locker)
             {
                 int log_step = 0;
+                // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                int pre_data = 0;
+                // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
 
                 while (br.Position < length)
                 {
@@ -112,14 +120,20 @@ namespace MissionPlanner.Utilities
                     switch (log_step)
                     {
                         case 0:
-                            if (data == HEAD_BYTE1)
+                            // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                            if (data == HEAD_BYTE1 || data == HEAD_BYTE_ZSY1)
                             {
                                 log_step++;
+                                pre_data = data;
                             }
+                            // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
                             break;
 
                         case 1:
-                            if (data == HEAD_BYTE2)
+                            // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                            if ((pre_data == HEAD_BYTE1 && data == HEAD_BYTE2) 
+                             || (pre_data == HEAD_BYTE_ZSY1 && data == HEAD_BYTE_ZSY2))
+                            // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
                             {
                                 log_step++;
                             }
@@ -184,6 +198,9 @@ namespace MissionPlanner.Utilities
         internal (byte MsgType, long Offset) ReadMessageTypeOffset(Stream br, long length)
         {
             int log_step = 0;
+            // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+            int pre_data = 0;
+            // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
 
             while (br.Position < length)
             {
@@ -192,15 +209,21 @@ namespace MissionPlanner.Utilities
                 switch (log_step)
                 {
                     case 0:
-                        if (data == HEAD_BYTE1)
+                        // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                        if (data == HEAD_BYTE1 || data == HEAD_BYTE_ZSY1)
                         {
                             log_step++;
+                            pre_data = data;
                         }
+                        // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
 
                         break;
 
                     case 1:
-                        if (data == HEAD_BYTE2)
+                        // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                        if ((pre_data == HEAD_BYTE1 && data == HEAD_BYTE2)
+                         || (pre_data == HEAD_BYTE_ZSY1 && data == HEAD_BYTE_ZSY2))
+                        // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
                         {
                             log_step++;
                         }
@@ -311,6 +334,9 @@ namespace MissionPlanner.Utilities
             lock (locker)
             {
                 int log_step = 0;
+                // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                int pre_data = 0;
+                // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
 
                 while (br.Position < length)
                 {
@@ -319,14 +345,20 @@ namespace MissionPlanner.Utilities
                     switch (log_step)
                     {
                         case 0:
-                            if (data == HEAD_BYTE1)
+                            // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                            if (data == HEAD_BYTE1 || data == HEAD_BYTE_ZSY1)
                             {
                                 log_step++;
+                                pre_data = data;
                             }
+                            // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
                             break;
 
                         case 1:
-                            if (data == HEAD_BYTE2)
+                            // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                            if ((pre_data == HEAD_BYTE1 && data == HEAD_BYTE2)
+                             || (pre_data == HEAD_BYTE_ZSY1 && data == HEAD_BYTE_ZSY2))
+                            // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
                             {
                                 log_step++;
                             }

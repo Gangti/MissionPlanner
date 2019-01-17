@@ -120,7 +120,9 @@ namespace MissionPlanner.Utilities
 
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "*.log;*.bin|*.log;*.bin";
+                // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                ofd.Filter = "*.log;*.bin;*.zog|*.log;*.bin;*.zog";
+                // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
 
                 ofd.ShowDialog();
 
@@ -315,7 +317,9 @@ namespace MissionPlanner.Utilities
             using (
                 OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "*.log;*.bin|*.log;*.bin";
+                // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                ofd.Filter = "*.log;*.bin;*.zog|*.log;*.bin;*.zog";
+                // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
 
                 ofd.ShowDialog();
 
@@ -527,7 +531,9 @@ namespace MissionPlanner.Utilities
             using (
                 OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "*.log;*.bin|*.log;*.bin";
+                // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                ofd.Filter = "*.log;*.bin;*.zog|*.log;*.bin;*.zog";
+                // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
 
                 ofd.ShowDialog();
 
@@ -713,7 +719,9 @@ namespace MissionPlanner.Utilities
             using (
                 OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "*.log;*.bin|*.log;*.bin";
+                // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                ofd.Filter = "*.log;*.bin;*.zog|*.log;*.bin;*.zog";
+                // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
 
                 ofd.ShowDialog();
 

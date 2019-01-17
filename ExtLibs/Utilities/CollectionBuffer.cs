@@ -48,9 +48,15 @@ namespace MissionPlanner.Utilities
             basestream.Position = 0;
             instream.Close();
 
-            if (basestream.ReadByte() == BinaryLog.HEAD_BYTE1)
+            // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+            int byte1 = basestream.ReadByte();
+            if (byte1 == BinaryLog.HEAD_BYTE1 || byte1 == BinaryLog.HEAD_BYTE_ZSY1)
+            // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
             {
-                if (basestream.ReadByte() == BinaryLog.HEAD_BYTE2)
+                // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                int byte2 = basestream.ReadByte();
+                if (byte2 == BinaryLog.HEAD_BYTE2 || byte2 == BinaryLog.HEAD_BYTE_ZSY2)
+                // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
                 {
                     binary = true;
                 }

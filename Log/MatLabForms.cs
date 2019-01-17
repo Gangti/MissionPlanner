@@ -36,7 +36,9 @@ namespace MissionPlanner.Log
         {
             using (OpenFileDialog openFileDialog1 = new OpenFileDialog())
             {
-                openFileDialog1.Filter = "Log Files|*.log;*.bin";
+                // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                openFileDialog1.Filter = "Log Files|*.log;*.bin;*.zog";
+                // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
                 openFileDialog1.FilterIndex = 2;
                 openFileDialog1.RestoreDirectory = true;
                 openFileDialog1.Multiselect = true;

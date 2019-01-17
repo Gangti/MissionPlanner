@@ -64,7 +64,9 @@
             // fileBrowseOtpbin
             // 
             this.fileBrowseOtpbin.filename = "otp.bin";
-            this.fileBrowseOtpbin.Filter = "*.bin|*.bin";
+            // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+            this.fileBrowseOtpbin.Filter = "*.bin|*.bin;*.zog";
+            // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
             this.fileBrowseOtpbin.Location = new System.Drawing.Point(126, 109);
             this.fileBrowseOtpbin.Name = "fileBrowseOtpbin";
             this.fileBrowseOtpbin.OpenFile = false;

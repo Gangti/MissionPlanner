@@ -1040,8 +1040,10 @@ gnssId GNSS Type
 
             // create kmz - aka zip file
 
-            FileStream fs = File.Open(filename.ToLower().Replace(".log.kml", ".kmz").Replace(".bin.kml", ".kmz"),
+            // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+            FileStream fs = File.Open(filename.ToLower().Replace(".log.kml", ".kmz").Replace(".bin.kml", ".kmz").Replace(".zog.kml", ".kmz"),
                 FileMode.Create);
+            // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
             ZipOutputStream zipStream = new ZipOutputStream(fs);
             zipStream.SetLevel(9); //0-9, 9 being the highest level of compression
             zipStream.UseZip64 = UseZip64.Off; // older zipfile

@@ -3842,7 +3842,9 @@ namespace MissionPlanner.GCSViews
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "Binary Log|*.bin;*.BIN";
+                // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                ofd.Filter = "Binary Log|*.bin;*.BIN;*.zog";
+                // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
                 ofd.Multiselect = true;
 
                 ofd.ShowDialog();
@@ -3861,7 +3863,9 @@ namespace MissionPlanner.GCSViews
         {
             using (OpenFileDialog openFileDialog1 = new OpenFileDialog())
             {
-                openFileDialog1.Filter = "Log Files|*.log;*.bin";
+                // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                openFileDialog1.Filter = "Log Files|*.log;*.bin;*.zog";
+                // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
                 openFileDialog1.FilterIndex = 2;
                 openFileDialog1.RestoreDirectory = true;
                 openFileDialog1.Multiselect = true;
@@ -3963,14 +3967,18 @@ namespace MissionPlanner.GCSViews
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "*.log;*.bin|*.log;*.bin";
+                // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                ofd.Filter = "*.log;*.bin;*.zog|*.log;*.bin;*.zog";
+                // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
                 ofd.ShowDialog();
 
                 if (ofd.FileName != "")
                 {
                     string newlogfile = null;
 
-                    if (ofd.FileName.ToLower().EndsWith(".bin"))
+                    // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                    if (ofd.FileName.ToLower().EndsWith(".bin") || ofd.FileName.ToLower().EndsWith(".zog"))
+                    // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
                     {
                         newlogfile = Path.GetTempFileName() + ".log";
 

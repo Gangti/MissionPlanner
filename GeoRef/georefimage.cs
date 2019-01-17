@@ -76,7 +76,9 @@ namespace MissionPlanner.GeoRef
 
         private void BUT_browselog_Click(object sender, EventArgs e)
         {
-            openFileDialog1.Filter = "Logs|*.log;*.tlog;*.bin";
+            // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+            openFileDialog1.Filter = "Logs|*.log;*.tlog;*.bin;*.zog";
+            // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
             openFileDialog1.ShowDialog();
 
             if (File.Exists(openFileDialog1.FileName))

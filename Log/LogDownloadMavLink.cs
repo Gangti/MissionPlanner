@@ -569,7 +569,9 @@ namespace MissionPlanner.Log
         {
             using (OpenFileDialog ofd = new OpenFileDialog())
             {
-                ofd.Filter = "Binary Log|*.bin";
+                // FT0XX/FIXED BY ZSY/20190117/FROM LOG TO ZOG
+                ofd.Filter = "Binary Log|*.bin;*.zog";
+                // FT0XX/CLOSE BY ZSY/20190117/FROM LOG TO ZOG
 
                 ofd.ShowDialog();
 
