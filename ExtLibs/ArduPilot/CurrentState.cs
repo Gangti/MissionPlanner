@@ -783,7 +783,9 @@ namespace MissionPlanner
             set
             {
                 _battery_remaining = value;
-                if (_battery_remaining < 0 || _battery_remaining > 100) _battery_remaining = 0;
+                // FT0XX/FIXED BY ZSY/20190213/Copter::send_extended_status1 -1 vs. GCS_MAVLINK::send_battery_status 100
+                if (_battery_remaining < 0 || _battery_remaining > 100) _battery_remaining = 100;
+                // FT0XX/CLOSE BY ZSY/20190213/Copter::send_extended_status1 -1 vs. GCS_MAVLINK::send_battery_status 100
             }
         }
 

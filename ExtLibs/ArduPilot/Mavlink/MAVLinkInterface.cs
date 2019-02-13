@@ -3383,7 +3383,9 @@ Please check the following
                     }
 
                     // check if looks like a mavlink packet and check for exclusions and write to console
-                    if (buffer[0] != 0xfe && buffer[0] != 'U' && buffer[0] != 0xfd)
+                    // FT0XX/FIXED BY ZSY/20190213/MAVLINK CUSTOMIZATION
+                    if (buffer[0] != 0xef && buffer[0] != 'U' && buffer[0] != 0xdf)
+                    // FT0XX/CLOSE BY ZSY/20190213/MAVLINK CUSTOMIZATION
                     {
                         if (buffer[0] >= 0x20 && buffer[0] <= 127 || buffer[0] == '\n' || buffer[0] == '\r')
                         {
@@ -3417,7 +3419,9 @@ Please check the following
                         Console.WriteLine(DateTime.Now.Millisecond + " SR2 " + BaseStream?.BytesToRead);
 
                     // check for a header
-                    if (buffer[0] == 0xfe || buffer[0] == 0xfd || buffer[0] == 'U')
+                    // FT0XX/FIXED BY ZSY/20190213/MAVLINK CUSTOMIZATION
+                    if (buffer[0] == 0xef || buffer[0] == 0xdf || buffer[0] == 'U')
+                    // FT0XX/CLOSE BY ZSY/20190213/MAVLINK CUSTOMIZATION
                     {
                         var mavlinkv2 = buffer[0] == MAVLINK_STX ? true : false;
 
@@ -3569,7 +3573,9 @@ Please check the following
             ushort crc = MavlinkCRC.crc_calculate(buffer, message.Length - sigsize - MAVLINK_NUM_CHECKSUM_BYTES);
 
             // calc extra bit of crc for mavlink 1.0/2.0
-            if (message.header == 0xfe || message.header == 0xfd)
+            // FT0XX/FIXED BY ZSY/20190213/MAVLINK CUSTOMIZATION
+            if (message.header == 0xef || message.header == 0xdf)
+            // FT0XX/CLOSE BY ZSY/20190213/MAVLINK CUSTOMIZATION
             {
                 crc = MavlinkCRC.crc_accumulate(msginfo.crc, crc);
             }
@@ -3705,8 +3711,10 @@ Please check the following
 
             try
             {
-                if ((message.header == 'U' || message.header == 0xfe || message.header == 0xfd) &&
+                // FT0XX/FIXED BY ZSY/20190213/MAVLINK CUSTOMIZATION
+                if ((message.header == 'U' || message.header == 0xef || message.header == 0xdf) &&
                     buffer.Length >= message.payloadlength)
+                // FT0XX/CLOSE BY ZSY/20190213/MAVLINK CUSTOMIZATION
                 {
                     // check if we lost pacakets based on seqno
                     int expectedPacketSeqNo = ((MAVlist[sysid, compid].recvpacketcount + 1) % 0x100);

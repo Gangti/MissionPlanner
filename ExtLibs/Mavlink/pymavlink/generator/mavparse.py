@@ -190,7 +190,9 @@ class MAVXML(object):
             self.command_24bit = False
             self.allow_extensions = False
         elif wire_protocol_version == PROTOCOL_1_0:
-            self.protocol_marker = 0xFE
+            # FT0XX/FIXED BY ZSY/20190223/MAVLINK CUSTOMIZATION
+            self.protocol_marker = 0xEF
+            # FT0XX/CLOSE BY ZSY/20190223/MAVLINK CUSTOMIZATION
             self.sort_fields = True
             self.little_endian = True
             self.crc_extra = True
@@ -198,7 +200,9 @@ class MAVXML(object):
             self.command_24bit = False
             self.allow_extensions = False
         elif wire_protocol_version == PROTOCOL_2_0:
-            self.protocol_marker = 0xFD
+            # FT0XX/FIXED BY ZSY/20190223/MAVLINK CUSTOMIZATION
+            self.protocol_marker = 0xDF
+            # FT0XX/CLOSE BY ZSY/20190223/MAVLINK CUSTOMIZATION
             self.sort_fields = True
             self.little_endian = True
             self.crc_extra = True

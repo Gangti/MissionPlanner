@@ -109,7 +109,9 @@ public partial class MAVLink
 
     public const byte MAVLINK_STX = ${protocol_marker};
 
-	public const byte MAVLINK_STX_MAVLINK1 = 0xFE;
+    // FT0XX/FIXED BY ZSY/20190223/MAVLINK CUSTOMIZATION
+	public const byte MAVLINK_STX_MAVLINK1 = 0xEF;
+    // FT0XX/CLOSE BY ZSY/20190223/MAVLINK CUSTOMIZATION
 
     public const byte MAVLINK_ENDIAN = ${mavlink_endian};
 

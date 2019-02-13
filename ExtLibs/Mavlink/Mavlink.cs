@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 public partial class MAVLink
 {
-    public const string MAVLINK_BUILD_DATE = "Sun Nov 11 2018";
+    public const string MAVLINK_BUILD_DATE = "Wed Feb 13 2019";
     public const string MAVLINK_WIRE_PROTOCOL_VERSION = "2.0";
     public const int MAVLINK_MAX_PAYLOAD_LEN = 255;
 
@@ -21,9 +21,11 @@ public partial class MAVLink
     public const int MAVLINK_LITTLE_ENDIAN = 1;
     public const int MAVLINK_BIG_ENDIAN = 0;
 
-    public const byte MAVLINK_STX = 253;
+    public const byte MAVLINK_STX = 223;
 
-	public const byte MAVLINK_STX_MAVLINK1 = 0xFE;
+    // FT0XX/FIXED BY ZSY/20190223/MAVLINK CUSTOMIZATION
+	public const byte MAVLINK_STX_MAVLINK1 = 0xEF;
+    // FT0XX/CLOSE BY ZSY/20190223/MAVLINK CUSTOMIZATION
 
     public const byte MAVLINK_ENDIAN = MAVLINK_LITTLE_ENDIAN;
 
